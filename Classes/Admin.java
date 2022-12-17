@@ -2,19 +2,19 @@ package Classes;
 
 public class Admin {
     private Name name;
-    private Address address;
+    
     private String telephoneNumber;
 
     public Admin() {
         
         name = new Name();
-        address = new Address();
+       
         this.telephoneNumber = "";
     }
 
-    public Admin(Name name, Address address, String telephoneNumber) {
+    public Admin(Name name,  String telephoneNumber) {
         this.name = name;
-        this.address = address;
+        this.telephoneNumber = telephoneNumber;
 
     }
 
@@ -22,9 +22,6 @@ public class Admin {
         this.name = name;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 
     public void setTelephoneNumber(String telephoneNumber) {
         this.telephoneNumber = telephoneNumber;
@@ -34,9 +31,7 @@ public class Admin {
         return name;
     }
     
-    public Address getAddress() {
-        return address;
-    }
+    
     
     public String getTelephoneNumber() {
         return telephoneNumber;
@@ -44,8 +39,6 @@ public class Admin {
 
     @Override
     public String toString() {
-        return name + "@" + address + "@" + telephoneNumber;
+        return name +  "@" + telephoneNumber;
     }
-     
-      
 }

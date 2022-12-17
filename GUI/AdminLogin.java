@@ -43,10 +43,11 @@ public class AdminLogin extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
+        btnNewUser = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Admin Login | Ride With Us");
+        setTitle("AdminLogin | Ride With Us");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(707, 569));
         setResizable(false);
@@ -106,6 +107,18 @@ public class AdminLogin extends javax.swing.JFrame {
         getContentPane().add(btnLogin);
         btnLogin.setBounds(430, 145, 90, 32);
 
+
+        btnNewUser.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnNewUser.setText("New User");
+        btnNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewUserActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNewUser);
+        btnNewUser.setBounds(270, 240, 150, 32);
+
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/bus.gif"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 700, 650);
@@ -114,14 +127,19 @@ public class AdminLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        FirstPage fp3 = new FirstPage();
-        fp3.setVisible(true);
-        fp3.pack();
+        FirstPage fp2 = new FirstPage();
+        fp2.setVisible(true);
+        fp2.pack();
         this.dispose();
         
         
     }//GEN-LAST:event_btnCancelActionPerformed
-
+    private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        AdminNew sn = new AdminNew();
+        sn.setVisible(true);
+        sn.pack();
+        this.dispose();
+    }
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordTextActionPerformed
@@ -149,9 +167,9 @@ public class AdminLogin extends javax.swing.JFrame {
 			password = loginDetails[1];
                         
                         if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
-                            LoadFile3 lf = new LoadFile3();
-                            lf.setVisible(true);
-                            lf.pack();
+                            LoadFile2 lf2 = new LoadFile2();
+                            lf2.setVisible(true);
+                            lf2.pack();
                             this.dispose();
                         }else{
                             JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
@@ -238,6 +256,7 @@ public class AdminLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnNewUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -246,4 +265,3 @@ public class AdminLogin extends javax.swing.JFrame {
     private javax.swing.JTextField usernameText;
     // End of variables declaration//GEN-END:variables
 }
-
