@@ -3,18 +3,21 @@ package Classes;
 public class Student {
     private Name name;
     private Address address;
-    private String telephoneNumber;
+    private String Id;
+    private String PhoneNo;
 
     public Student() {
         
         name = new Name();
         address = new Address();
-        this.telephoneNumber = "";
+        this.PhoneNo = "";
+        this.Id="";
     }
 
-    public Student(Name name, Address address, String telephoneNumber) {
+    public Student(Name name, String Id,Address address, String PhoneNo) {
         this.name = name;
         this.address = address;
+        this.Id = Id;
 
     }
     public void setName(Name name) {
@@ -25,8 +28,12 @@ public class Student {
         this.address = address;
     }
 
-    public void setTelephoneNumber(String telephoneNumber) {
-        this.telephoneNumber = telephoneNumber;
+    public void setPhoneNo(String PhoneNo) {
+        this.PhoneNo = PhoneNo;
+    }
+
+    public void setId(String Id) {
+        this.Id = Id;
     }
     
     public Name getName() {
@@ -37,13 +44,13 @@ public class Student {
         return address;
     }
     
-    public String getTelephoneNumber() {
-        return telephoneNumber;
+    public String getPhoneNo() {
+        return PhoneNo;
     }
 
     @Override
     public String toString() {
-        return name + "@" + address + "@" + telephoneNumber;
+        return name + "@" + Id +"@"+ address + "@" + PhoneNo;
     }
      
       

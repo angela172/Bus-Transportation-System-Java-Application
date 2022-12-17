@@ -41,8 +41,9 @@ public class StudentLogin extends javax.swing.JFrame {
         usernameText = new javax.swing.JTextField();
         passwordText = new javax.swing.JPasswordField();
         btnCancel = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
+        btnNewUser = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -105,6 +106,16 @@ public class StudentLogin extends javax.swing.JFrame {
         getContentPane().add(btnLogin);
         btnLogin.setBounds(430, 145, 90, 32);
 
+        btnNewUser.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnNewUser.setText("New User");
+        btnNewUser.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNewUserActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnNewUser);
+        btnNewUser.setBounds(270, 240, 150, 32);
+
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/bus.gif"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 700, 650);
@@ -120,6 +131,13 @@ public class StudentLogin extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_btnCancelActionPerformed
+
+    private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        StudentNew sn = new StudentNew();
+        sn.setVisible(true);
+        sn.pack();
+        this.dispose();
+    }
 
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
         // TODO add your handling code here:
@@ -237,6 +255,7 @@ public class StudentLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnLogin;
+    private javax.swing.JButton btnNewUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
