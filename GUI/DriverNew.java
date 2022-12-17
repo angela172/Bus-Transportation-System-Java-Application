@@ -1,5 +1,5 @@
 
-/*
+/* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -14,22 +14,18 @@ import Classes.*;
  *
  * @author Senarathna
  */
-public class StudentNew extends javax.swing.JFrame {
+public class DriverNew extends javax.swing.JFrame {
 
     /**
-     * Creates new form StudentNew
+     * Creates new form DriverNew
      */
     Name Name;
     String FirstN ="";
     String LastN = "";
-    String Id = "";
     String PhoneNo = "";
-    Address Address;
-    String street = "";
-    String city = "";
     String passWord = "";
     
-    public StudentNew() {
+    public DriverNew() {
         initComponents();
         
         this.pack();
@@ -50,22 +46,16 @@ public class StudentNew extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         FirstNameText = new javax.swing.JTextField();
         LastNameText = new javax.swing.JTextField();
         passwordText = new javax.swing.JPasswordField();
         PhoneNoText = new javax.swing.JTextField();
-        CityAddressText = new javax.swing.JTextField();
-        StreetAddressText = new javax.swing.JTextField();
-        IdText = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
         btnCreateAccount = new javax.swing.JButton();
         
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Student CreateAccount | Ride With Us");
+        setTitle("Driver CreateAccount | Ride With Us");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setMinimumSize(new java.awt.Dimension(707, 569));
         setResizable(false);
@@ -81,30 +71,17 @@ public class StudentNew extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(170, 130, 100, 20);
 
+
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel3.setText("ID:");
+        jLabel3.setText("Phone Number:");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(170, 160, 100, 19);
 
-        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel4.setText("Phone Number:");
+
+        jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
+        jLabel4.setText("Password:");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(170, 190, 100, 19);
-
-        jLabel5.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel5.setText("City:");
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(170, 220, 100, 19);
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
-        jLabel6.setText("Street:");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(170, 250, 100, 19);
-
-        jLabel7.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
-        jLabel7.setText("Password:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(170, 280, 100, 19);
 
         FirstNameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,13 +99,6 @@ public class StudentNew extends javax.swing.JFrame {
         getContentPane().add(LastNameText);
         LastNameText.setBounds(280, 130, 140, 28);
 
-        IdText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                IdTextActionPerformed(evt);
-            }
-        });
-        getContentPane().add(IdText);
-        IdText.setBounds(280, 160, 140, 28);
 
         PhoneNoText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,23 +106,7 @@ public class StudentNew extends javax.swing.JFrame {
             }
         });
         getContentPane().add(PhoneNoText);
-        PhoneNoText.setBounds(280, 190, 140, 28);
-
-        CityAddressText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddressTextActionPerformed(evt);
-            }
-        });
-        getContentPane().add(CityAddressText);
-        CityAddressText.setBounds(280, 220, 140, 28);
-
-        StreetAddressText.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddressTextActionPerformed(evt);
-            }
-        });
-        getContentPane().add(StreetAddressText);
-        StreetAddressText.setBounds(280, 250, 140, 28);
+        PhoneNoText.setBounds(280, 160, 140, 28);
 
         passwordText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -160,7 +114,7 @@ public class StudentNew extends javax.swing.JFrame {
             }
         });
         getContentPane().add(passwordText);
-        passwordText.setBounds(280, 280, 140, 28);
+        passwordText.setBounds(280, 190, 140, 28);
 
         btnCancel.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
         btnCancel.setText("Cancel");
@@ -196,7 +150,7 @@ public class StudentNew extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        StudentLogin sl = new StudentLogin();
+        DriverLogin sl = new DriverLogin();
         sl.setVisible(true);
         sl.pack();
         this.dispose();
@@ -215,19 +169,10 @@ public class StudentNew extends javax.swing.JFrame {
         
     }//GEN-LAST:event_usernameTextActionPerformed
 
-    private void IdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
-        Id = IdText.getText();
-    }//GEN-LAST:event_usernameTextActionPerformed
-
     private void PhoneNoTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
         PhoneNo = PhoneNoText.getText();
     }//GEN-LAST:event_usernameTextActionPerformed
 
-    private void AddressTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
-        city = CityAddressText.getText();
-        street = StreetAddressText.getText();
-        Address = new Address(street,city);
-    }//GEN-LAST:event_usernameTextActionPerformed
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
        /*  Name = Name.getText();
@@ -235,10 +180,10 @@ public class StudentNew extends javax.swing.JFrame {
         String[] loginDetails = new String[4];
       String Name = "";
       String Id = "";*/
-	try(PrintWriter write = new PrintWriter(new FileOutputStream("newAccount.txt"))){
+	try(PrintWriter write = new PrintWriter(new FileOutputStream("newAccountD.txt"))){
 	
 		boolean end = false;
-        Student s = new Student(Name,Id,Address,PhoneNo);
+        Driver s = new Driver(Name,PhoneNo);
         write.println(s);
 	}
 	catch(FileNotFoundException ex){
@@ -298,20 +243,20 @@ catch(Exception ex){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(StudentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DriverLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(StudentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DriverLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(StudentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DriverLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(StudentLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DriverLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new StudentLogin().setVisible(true);
+                new DriverLogin().setVisible(true);
             }
         });
     }
@@ -323,15 +268,9 @@ catch(Exception ex){
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JPasswordField passwordText;
     private javax.swing.JTextField FirstNameText;
     private javax.swing.JTextField LastNameText;
     private javax.swing.JTextField PhoneNoText;
-    private javax.swing.JTextField CityAddressText;
-    private javax.swing.JTextField StreetAddressText;
-    private javax.swing.JTextField IdText;
     // End of variables declaration//GEN-END:variables
 }
