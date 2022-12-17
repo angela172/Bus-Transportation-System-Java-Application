@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
+//hello raitha
 public class SystemManager {
    
     private String inputFile;       //the file contains all details    
