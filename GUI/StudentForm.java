@@ -88,8 +88,8 @@ public class StudentForm extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
         menuReserveSeat = new javax.swing.JMenuItem();
         menuCancelReservation = new javax.swing.JMenuItem();
-        menuFlightPassengerList = new javax.swing.JMenuItem();
-        menuPassengerReservations = new javax.swing.JMenuItem();
+        //menuFlightPassengerList = new javax.swing.JMenuItem();
+        menuStudentReservations = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         menuCloseAll = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
@@ -98,7 +98,7 @@ public class StudentForm extends javax.swing.JFrame {
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Fly With Us | User Portal");
+        setTitle("Ride With Us | User Portal");
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -198,7 +198,7 @@ public class StudentForm extends javax.swing.JFrame {
         });
         jMenu4.add(menuCancelReservation);
 
-        menuFlightPassengerList.setText("Flight Passenger List");
+       /*  menuFlightPassengerList.setText("Flight Passenger List");
         menuFlightPassengerList.setPreferredSize(new java.awt.Dimension(139, 30));
         menuFlightPassengerList.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -213,8 +213,8 @@ public class StudentForm extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuPassengerReservationsActionPerformed(evt);
             }
-        });
-        jMenu4.add(menuPassengerReservations);
+        });*/
+        jMenu4.add(menuStudentReservations);
 
         jMenuBar1.add(jMenu4);
 
@@ -302,7 +302,7 @@ public class StudentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_menuAboutActionPerformed
 
     private void menuReserveSeatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReserveSeatActionPerformed
-       FlightSearch interf = new FlightSearch();
+       busSearch interf = new busSearch();
        interf.pack();
        interf.setVisible(true);
        dp.add(interf);
@@ -316,14 +316,14 @@ public class StudentForm extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCancelReservationActionPerformed
 
     private void menuFlightPassengerListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFlightPassengerListActionPerformed
-        GetPassengerList list = new GetPassengerList();
+        GetStudentList list = new GetStudentList();
         list.pack();
         list.setVisible(true);
         dp.add(list);
     }//GEN-LAST:event_menuFlightPassengerListActionPerformed
 
     private void menuPassengerReservationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPassengerReservationsActionPerformed
-        GetFlightList list = new GetFlightList();
+        getBusList list = new getBusList();
         list.pack();
         list.setVisible(true);
         dp.add(list);
@@ -331,12 +331,12 @@ public class StudentForm extends javax.swing.JFrame {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         manager.saveReservations();;
-        manager.saveFlightInfo();
+        //manager.saveBusInfo();
     }//GEN-LAST:event_formWindowClosing
 
     private void menuSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSaveActionPerformed
         manager.saveReservations();;
-        manager.saveFlightInfo();
+        //manager.saveFlightInfo();
     }//GEN-LAST:event_menuSaveActionPerformed
 
 
@@ -354,8 +354,8 @@ public class StudentForm extends javax.swing.JFrame {
     private javax.swing.JMenuItem menuCancelReservation;
     private javax.swing.JMenuItem menuClose;
     private javax.swing.JMenuItem menuCloseAll;
-    private javax.swing.JMenuItem menuFlightPassengerList;
-    private javax.swing.JMenuItem menuPassengerReservations;
+   // private javax.swing.JMenuItem menuFlightPassengerList;
+    private javax.swing.JMenuItem menuStudentReservations;
     private javax.swing.JMenuItem menuReserveSeat;
     private javax.swing.JMenuItem menuSave;
     private javax.swing.JPanel panelStatus;
