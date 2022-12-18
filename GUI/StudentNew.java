@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -19,12 +18,11 @@ public class StudentNew extends javax.swing.JFrame {
     /**
      * Creates new form StudentNew
      */
-    Name Name;
+   
     String FirstN ="";
     String LastN = "";
     String Id = "";
     String PhoneNo = "";
-    Address Address;
     String street = "";
     String city = "";
     String passWord = "";
@@ -205,14 +203,13 @@ public class StudentNew extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelActionPerformed
 
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
-        passWord = passwordText.getText();
+       passWord = passwordText.getText();
     }//GEN-LAST:event_passwordTextActionPerformed
 
     private void NameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
         FirstN = FirstNameText.getText();
         LastN = LastNameText.getText();
-       // Name = new Name(FirstN,LastN);
-        
+   
     }//GEN-LAST:event_usernameTextActionPerformed
 
     private void IdTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
@@ -226,54 +223,93 @@ public class StudentNew extends javax.swing.JFrame {
     private void AddressTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
         city = CityAddressText.getText();
         street = StreetAddressText.getText();
-        System.out.println(city);
-        System.out.println(street);
-        //Address a = new Address(street,city);
     }//GEN-LAST:event_usernameTextActionPerformed
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
-       // Name = Name.getText();
-        //Id = Id.getText();
+       /*  Name = Name.getText();
+        Id = Id.getText();
         String[] loginDetails = new String[4];
-      //String Name = "";
-      //String Id = "";*/
-	try(PrintWriter write = new PrintWriter(new FileOutputStream("loginDetails.txt"))){
-	
-	//	boolean end = false;
-    write.println(FirstNameText.getText()+ LastNameText.getText()+ CityAddressText.getText()+StreetAddressText.getText()+PhoneNoText.getText());
-      
-       
-    }   
+      String Name = "";
+      String Id = "";*/
 
-      //  write.println(s);
+	try(PrintWriter bw = new PrintWriter(new BufferedWriter(new FileWriter("loginDetails.txt",true)))){
 	
+		boolean end = false;
+        //Student s = new Student(FirstN,LastN,Id,street,city,PhoneNo);
+        bw.write(FirstNameText.getText()+","+LastNameText.getText()+","+IdText.getText()+","+StreetAddressText.getText()+","+CityAddressText.getText()+","+PhoneNoText.getText()+"\n");
+        JOptionPane.showMessageDialog(null, "New User created"); 
+        
+	}
 	catch(FileNotFoundException ex){
-	 JOptionPane.showMessageDialog(null,"File Not Found");
+		 JOptionPane.showMessageDialog(null,"File Not Found");
 	}
 	catch(Exception ex){
 		 JOptionPane.showMessageDialog(null,ex.getMessage());
 	}
          
+      
+/*    package java4s;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class OnServletLogin extends HttpServlet  
+{
+    protected void doPost(HttpServletRequest req,HttpServletResponse res)throws ServletException,IOException
+	{
+		PrintWriter pw=res.getWriter();
+		res.setContentType("text/html");
+
+		String user=req.getParameter("userName");
+		String pass=req.getParameter("userPassword");
+
+		if(user.equals("java4s")&&pass.equals("java4s")) 
+                 pw.println("Login Success...!"); 
+                else
+                 pw.println("Login Failed...!");
+		 pw.close();
+
+	}
 
 }
+*/
 
 /*try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
-	
+    StudentLogin sn = new StudentLogin();
+
+    //String password=sn.passWord;
+    //String username =sn.username;
+    
+	String[] loginDetails = new String[4];
     boolean end = false;
     
-    while(read.hasNextLine()&& !end){
+   String passWord=passwordText.getText();
+     String userName = FirstNameText.getText();
+    int n = FirstNameText.getText().length();
 
+
+    while(read.hasNextLine()&& !end){
+        
         loginDetails = read.nextLine().split(",");
-        String userName = loginDetails[0];
-        String password = loginDetails[1];
-                    
-                    if(username.compareTo(userName)==0 && password.compareTo(passWord)==0){
+        String username = loginDetails[0];
+        String password = loginDetails[5];
+         System.out.println(userName);
+        System.out.println(username);
+        System.out.println(passWord);
+        System.out.println(password);
+                 
+                    if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
                         LoadFile1 lf = new LoadFile1();
                         lf.setVisible(true);
                         lf.pack();
                         this.dispose();
                     }else{
-                        JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
+                        JOptionPane.showMessageDialog(null, username+password);
                     }
     }
 }
@@ -284,9 +320,9 @@ catch(Exception ex){
      JOptionPane.showMessageDialog(null,ex.getMessage());
 }
     
+  */
   
-  
-}       */   
+}         
     /**
      * @param args the command line arguments
      */

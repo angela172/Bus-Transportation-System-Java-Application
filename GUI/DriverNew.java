@@ -1,4 +1,3 @@
-
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -184,7 +183,7 @@ public class DriverNew extends javax.swing.JFrame {
 	
 		boolean end = false;
         Driver s = new Driver(Name,PhoneNo);
-        write.println(s);
+        write.println(FirstNameText.getText()+","+LastNameText.getText()+","+PhoneNoText.getText());
 	}
 	catch(FileNotFoundException ex){
 		 JOptionPane.showMessageDialog(null,"File Not Found");

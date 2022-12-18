@@ -1,4 +1,3 @@
-
 /* 
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -180,12 +179,12 @@ public class AdminNew extends javax.swing.JFrame {
         String[] loginDetails = new String[4];
       String Name = "";
       String Id = "";*/
-	try(PrintWriter write = new PrintWriter(new FileOutputStream("newAccountD.txt"))){
+	try(PrintWriter write = new PrintWriter(new FileOutputStream("newAccountA.txt"))){
 	
 		boolean end = false;
         Admin s = new Admin(Name,PhoneNo);
-        write.println(s);
-	}
+        write.println(FirstNameText.getText()+","+LastNameText.getText()+","+PhoneNoText.getText());
+    }
 	catch(FileNotFoundException ex){
 		 JOptionPane.showMessageDialog(null,"File Not Found");
 	}
@@ -273,4 +272,5 @@ catch(Exception ex){
     private javax.swing.JTextField LastNameText;
     private javax.swing.JTextField PhoneNoText;
     // End of variables declaration//GEN-END:variables
+
 }

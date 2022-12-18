@@ -148,12 +148,13 @@ public class StudentLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_usernameTextActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
-      username = usernameText.getText();
-      passWord = passwordText.getText();
+      String usernamei = usernameText.getText();
+      String passWordi = passwordText.getText();
       
       String[] loginDetails = new String[2];
-	String userName = "";
-	String password = "";
+	String userNamef = "";
+	String passwordf = "";
+   
 	
 	try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
 	
@@ -162,16 +163,18 @@ public class StudentLogin extends javax.swing.JFrame {
 		while(read.hasNextLine()&& !end){
 
 			loginDetails = read.nextLine().split(",");
-			userName = loginDetails[0];
-			password = loginDetails[1];
+			//String x = loginDetails[0];
+            //int len = username.length();
+            userNamef=loginDetails[0];
+			passwordf = loginDetails[5];
                         
-                        if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
-                            LoadFile1 lf = new LoadFile1();
+                        if(userNamef.compareTo(usernamei)==0 && passwordf.compareTo(passWordi)==0){
+                            StudentForm lf = new StudentForm();
                             lf.setVisible(true);
                             lf.pack();
                             this.dispose();
                         }else{
-                            JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
+                            JOptionPane.showMessageDialog(null, usernamei+passWordi+userNamef+passwordf);
                         }
 		}
 	}
