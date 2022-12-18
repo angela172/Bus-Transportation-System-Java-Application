@@ -211,7 +211,7 @@ public class StudentNew extends javax.swing.JFrame {
     private void NameTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
         FirstN = FirstNameText.getText();
         LastN = LastNameText.getText();
-        Name = new Name(FirstN,LastN);
+       // Name = new Name(FirstN,LastN);
         
     }//GEN-LAST:event_usernameTextActionPerformed
 
@@ -226,30 +226,36 @@ public class StudentNew extends javax.swing.JFrame {
     private void AddressTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTextActionPerformed
         city = CityAddressText.getText();
         street = StreetAddressText.getText();
-        Address = new Address(street,city);
+        System.out.println(city);
+        System.out.println(street);
+        //Address a = new Address(street,city);
     }//GEN-LAST:event_usernameTextActionPerformed
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
-       /*  Name = Name.getText();
-        Id = Id.getText();
+       // Name = Name.getText();
+        //Id = Id.getText();
         String[] loginDetails = new String[4];
-      String Name = "";
-      String Id = "";*/
-	try(PrintWriter write = new PrintWriter(new FileOutputStream("newAccount.txt"))){
+      //String Name = "";
+      //String Id = "";*/
+	try(PrintWriter write = new PrintWriter(new FileOutputStream("loginDetails.txt"))){
 	
-		boolean end = false;
-        Student s = new Student(Name,Id,Address,PhoneNo);
-        write.println(s);
-	}
+	//	boolean end = false;
+    write.println(FirstNameText.getText()+ LastNameText.getText()+ CityAddressText.getText()+StreetAddressText.getText()+PhoneNoText.getText());
+      
+       
+    }   
+
+      //  write.println(s);
+	
 	catch(FileNotFoundException ex){
-		 JOptionPane.showMessageDialog(null,"File Not Found");
+	 JOptionPane.showMessageDialog(null,"File Not Found");
 	}
 	catch(Exception ex){
 		 JOptionPane.showMessageDialog(null,ex.getMessage());
 	}
          
-      
-    }
+
+}
 
 /*try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
 	
@@ -258,10 +264,10 @@ public class StudentNew extends javax.swing.JFrame {
     while(read.hasNextLine()&& !end){
 
         loginDetails = read.nextLine().split(",");
-        userName = loginDetails[0];
-        password = loginDetails[1];
+        String userName = loginDetails[0];
+        String password = loginDetails[1];
                     
-                    if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
+                    if(username.compareTo(userName)==0 && password.compareTo(passWord)==0){
                         LoadFile1 lf = new LoadFile1();
                         lf.setVisible(true);
                         lf.pack();
@@ -280,7 +286,7 @@ catch(Exception ex){
     
   
   
-}*/           
+}       */   
     /**
      * @param args the command line arguments
      */
