@@ -63,7 +63,6 @@ public class StudentLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(170, 180, 61, 19);
 
-        usernameText.setText("student");
         usernameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameTextActionPerformed(evt);
@@ -71,7 +70,6 @@ public class StudentLogin extends javax.swing.JFrame {
         });
         getContentPane().add(usernameText);
         usernameText.setBounds(280, 145, 123, 30);
-        passwordText.setText("root");
         passwordText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordTextActionPerformed(evt);

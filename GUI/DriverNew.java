@@ -1,14 +1,7 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package GUI;
 import java.util.Scanner;
 import java.io.*;
 import javax.swing.JOptionPane;
-import java.awt.Color;
-
 
 import Classes.*;
 /**
@@ -53,8 +46,6 @@ public class DriverNew extends javax.swing.JFrame {
         PhoneNoText = new javax.swing.JTextField();
         btnCancel = new javax.swing.JButton();
         btnCreateAccount = new javax.swing.JButton();
-        dp = new javax.swing.JDesktopPane();
-panelStatus = new javax.swing.JPanel();
         
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,27 +58,23 @@ panelStatus = new javax.swing.JPanel();
         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel1.setText("First Name:");
         getContentPane().add(jLabel1);
-        jLabel1.setForeground(Color.white);
         jLabel1.setBounds(170, 100, 150, 20);
 
         jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel2.setText("Last Name:");
         getContentPane().add(jLabel2);
-        jLabel2.setForeground(Color.white);
         jLabel2.setBounds(170, 130, 100, 20);
 
 
         jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
         jLabel3.setText("Phone Number:");
         getContentPane().add(jLabel3);
-        jLabel3.setForeground(Color.white);
-        jLabel3.setBounds(170, 160, 120, 19);
+        jLabel3.setBounds(170, 160, 100, 19);
 
 
         jLabel4.setFont(new java.awt.Font("SansSerif", 0, 15)); // NOI18N
         jLabel4.setText("Password:");
         getContentPane().add(jLabel4);
-        jLabel4.setForeground(Color.white);
         jLabel4.setBounds(170, 190, 100, 19);
 
         FirstNameText.addActionListener(new java.awt.event.ActionListener() {
@@ -148,20 +135,6 @@ panelStatus = new javax.swing.JPanel();
         });
         getContentPane().add(btnCreateAccount);
         btnCreateAccount.setBounds(200, 400, 150, 32);
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panelStatus, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(dp)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(dp)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(panelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
 
         /*jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/bus.gif"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -196,17 +169,12 @@ panelStatus = new javax.swing.JPanel();
 
 
     private void btnCreateAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateAccountActionPerformed
-       /*  Name = Name.getText();
-        Id = Id.getText();
-        String[] loginDetails = new String[4];
-      String Name = "";
-      String Id = "";*/
-	try(PrintWriter write = new PrintWriter(new FileOutputStream("newAccountD.txt"))){
+       
+	try(PrintWriter write = new PrintWriter(new FileOutputStream("DloginDetails.txt"))){
 	
 		boolean end = false;
         Driver s = new Driver(Name,PhoneNo);
-        write.println(FirstNameText.getText()+","+LastNameText.getText()+","+PhoneNoText.getText());
-        JOptionPane.showMessageDialog(null, "New User created"); 
+        write.println(FirstNameText.getText()+","+LastNameText.getText()+","+PhoneNoText.getText()+","+passwordText.getText());
 	}
 	catch(FileNotFoundException ex){
 		 JOptionPane.showMessageDialog(null,"File Not Found");
@@ -218,36 +186,7 @@ panelStatus = new javax.swing.JPanel();
       
     }
 
-/*try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
-	
-    boolean end = false;
-    
-    while(read.hasNextLine()&& !end){
-
-        loginDetails = read.nextLine().split(",");
-        userName = loginDetails[0];
-        password = loginDetails[1];
-                    
-                    if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
-                        LoadFile1 lf = new LoadFile1();
-                        lf.setVisible(true);
-                        lf.pack();
-                        this.dispose();
-                    }else{
-                        JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
-                    }
-    }
-}
-catch(FileNotFoundException ex){
-     JOptionPane.showMessageDialog(null,"File Not Found");
-}
-catch(Exception ex){
-     JOptionPane.showMessageDialog(null,ex.getMessage());
-}
-    
-  
-  
-}*/           
+           
     /**
      * @param args the command line arguments
      */
@@ -294,7 +233,5 @@ catch(Exception ex){
     private javax.swing.JTextField FirstNameText;
     private javax.swing.JTextField LastNameText;
     private javax.swing.JTextField PhoneNoText;
-    private javax.swing.JDesktopPane dp;
-    private javax.swing.JPanel panelStatus;
     // End of variables declaration//GEN-END:variables
 }

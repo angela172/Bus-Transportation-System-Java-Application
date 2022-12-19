@@ -43,7 +43,6 @@ public class AdminLogin extends javax.swing.JFrame {
         btnCancel = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnLogin = new javax.swing.JButton();
-        btnNewUser = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +62,6 @@ public class AdminLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(170, 180, 61, 19);
 
-        usernameText.setText("admin");
         usernameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameTextActionPerformed(evt);
@@ -72,7 +70,6 @@ public class AdminLogin extends javax.swing.JFrame {
         getContentPane().add(usernameText);
         usernameText.setBounds(280, 145, 123, 30);
 
-        passwordText.setText("root");
         passwordText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordTextActionPerformed(evt);
@@ -108,17 +105,6 @@ public class AdminLogin extends javax.swing.JFrame {
         btnLogin.setBounds(430, 145, 90, 32);
 
 
-        btnNewUser.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnNewUser.setText("New User");
-        btnNewUser.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnNewUserActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btnNewUser);
-        btnNewUser.setBounds(270, 240, 150, 32);
-
-
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/GUI/bus.gif"))); // NOI18N
         getContentPane().add(jLabel4);
         jLabel4.setBounds(0, 0, 700, 650);
@@ -134,12 +120,7 @@ public class AdminLogin extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_btnCancelActionPerformed
-    private void btnNewUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        AdminNew sn = new AdminNew();
-        sn.setVisible(true);
-        sn.pack();
-        this.dispose();
-    }
+    
     private void passwordTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTextActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_passwordTextActionPerformed
@@ -151,73 +132,20 @@ public class AdminLogin extends javax.swing.JFrame {
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
       username = usernameText.getText();
       passWord = passwordText.getText();
-      
-      String[] loginDetails = new String[2];
-	String userName = "";
-	String password = "";
-	
-	try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
-	
-		boolean end = false;
-		
-		while(read.hasNextLine()&& !end){
-
-			loginDetails = read.nextLine().split(",");
-			userName = loginDetails[0];
-			password = loginDetails[1];
-                        
-                        if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
-                            LoadFile2 lf2 = new LoadFile2();
-                            lf2.setVisible(true);
-                            lf2.pack();
-                            this.dispose();
-                        }else{
-                            JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
-                        }
+                              
+            if(username.compareTo("admin")==0 && passWord.compareTo("root")==0){
+                AdminForm lf2 = new AdminForm();
+                lf2.setVisible(true);
+                lf2.pack();
+                this.dispose();
+            }else{
+                JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
+            }
 		}
-	}
-	catch(FileNotFoundException ex){
-		 JOptionPane.showMessageDialog(null,"File Not Found");
-	}
-	catch(Exception ex){
-		 JOptionPane.showMessageDialog(null,ex.getMessage());
-	}
-        
-        
       
-    }//GEN-LAST:event_btnLoginActionPerformed
+    //GEN-LAST:event_btnLoginActionPerformed
 
-   /* public void login(){
-
-	String[] loginDetails = new String[2];
-	String userName = "";
-	String password = "";
-	
-	try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
-		//PrintWriter pw = new PrintWriter(new FileOutputStream(outputFile))){
-	
-		boolean end = false;
-		
-		while(read.hasNextLine()&& !end){
-
-			loginDetails = read.nextLine().split(",");
-			userName = loginDetails[0];
-			password = loginDetails[1];
-			
-			if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
-				System.out.println("AdminLogin Successful");
-			}
-
-			
-		}
-	}
-	catch(FileNotFoundException ex){
-		System.out.println("File Not Found");
-	}
-	catch(Exception ex){
-		System.out.println("Exception");
-	}
-}  */                      
+                      
     /**
      * @param args the command line arguments
      */
@@ -256,7 +184,6 @@ public class AdminLogin extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnLogin;
-    private javax.swing.JButton btnNewUser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

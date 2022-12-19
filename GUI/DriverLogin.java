@@ -63,7 +63,6 @@ public class DriverLogin extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(170, 180, 61, 19);
 
-        usernameText.setText("admin");
         usernameText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameTextActionPerformed(evt);
@@ -72,7 +71,6 @@ public class DriverLogin extends javax.swing.JFrame {
         getContentPane().add(usernameText);
         usernameText.setBounds(280, 145, 123, 30);
 
-        passwordText.setText("root");
         passwordText.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passwordTextActionPerformed(evt);
@@ -156,25 +154,29 @@ public class DriverLogin extends javax.swing.JFrame {
 	String userName = "";
 	String password = "";
 	
-	try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
+	try(Scanner read = new Scanner(new FileInputStream("DloginDetails.txt"))){
 	
-		boolean end = false;
+		boolean end = true;
 		
-		while(read.hasNextLine()&& !end){
+		while(read.hasNextLine()&& end){
 
 			loginDetails = read.nextLine().split(",");
 			userName = loginDetails[0];
-			password = loginDetails[1];
+			password = loginDetails[3];
                         
                         if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
-                            LoadFile2 lf2 = new LoadFile2();
+                            DriverForm lf2 = new DriverForm();
                             lf2.setVisible(true);
                             lf2.pack();
                             this.dispose();
-                        }else{
-                            JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
+                            end = false;
+                            JOptionPane.showMessageDialog(null, "Login Successful");
+
                         }
 		}
+        if(end){
+            JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
+        }
 	}
 	catch(FileNotFoundException ex){
 		 JOptionPane.showMessageDialog(null,"File Not Found");
@@ -187,37 +189,7 @@ public class DriverLogin extends javax.swing.JFrame {
       
     }//GEN-LAST:event_btnLoginActionPerformed
 
-   /* public void login(){
-
-	String[] loginDetails = new String[2];
-	String userName = "";
-	String password = "";
-	
-	try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
-		//PrintWriter pw = new PrintWriter(new FileOutputStream(outputFile))){
-	
-		boolean end = false;
-		
-		while(read.hasNextLine()&& !end){
-
-			loginDetails = read.nextLine().split(",");
-			userName = loginDetails[0];
-			password = loginDetails[1];
-			
-			if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
-				System.out.println("DriverLogin Successful");
-			}
-
-			
-		}
-	}
-	catch(FileNotFoundException ex){
-		System.out.println("File Not Found");
-	}
-	catch(Exception ex){
-		System.out.println("Exception");
-	}
-}  */                      
+                  
     /**
      * @param args the command line arguments
      */
