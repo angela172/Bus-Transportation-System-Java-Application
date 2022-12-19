@@ -11,7 +11,7 @@ public class bus {
     private String busNumber;
     private String travelDate;
     private String travelTime;
-    private String arrivalTime;
+    
 
     //constructor 01
     public bus() {

@@ -152,31 +152,35 @@ public class StudentLogin extends javax.swing.JFrame {
       String passWordi = passwordText.getText();
       
       String[] loginDetails = new String[2];
-	String userNamef = "";
-	String passwordf = "";
+	  String userNamef = "";
+	  String passwordf = "";
    
 	
 	try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
 	
-		boolean end = false;
+		boolean end = true;
+
 		
-		while(read.hasNextLine()&& !end){
+		while(read.hasNextLine()&& end){
 
 			loginDetails = read.nextLine().split(",");
 			//String x = loginDetails[0];
             //int len = username.length();
             userNamef=loginDetails[0];
-			passwordf = loginDetails[5];
+			passwordf = loginDetails[6];
+
                         
                         if(userNamef.compareTo(usernamei)==0 && passwordf.compareTo(passWordi)==0){
                             StudentForm lf = new StudentForm();
                             lf.setVisible(true);
                             lf.pack();
                             this.dispose();
-                        }else{
-                            JOptionPane.showMessageDialog(null, usernamei+passWordi+userNamef+passwordf);
+                            end = false;
                         }
 		}
+        if(end){
+            JOptionPane.showMessageDialog(null, "Invalid Credentials");
+        }
 	}
 	catch(FileNotFoundException ex){
 		 JOptionPane.showMessageDialog(null,"File Not Found");

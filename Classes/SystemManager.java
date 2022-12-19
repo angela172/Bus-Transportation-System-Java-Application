@@ -7,14 +7,14 @@ import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-//hello raitha
+
 public class SystemManager {
    
     private String inputFile;       //the file contains all details    
     //private Airport[] airport;      //stores details of all airports
     //private Airline[] airlines;     //store details of all airlines
-    private bus[] bus;       //stores details of all flights belongs to all airlines    
-    private Seat[][] seats;          //stores details of seats belongs to all flights;
+    private bus[] bus;       //stores details of all bus belongs to all airlines    
+    private Seat[][] seats;          //stores details of seats belongs to all bus;
     private Reservation[] reservations = new Reservation[448];
     public static int reservationNumber = -1;
     
@@ -27,19 +27,10 @@ public class SystemManager {
         //this.readAirLineDetails();
         this.readBusDetails();
         
-        this.setSeatDetails();
+        this.setBusSeatDetails();
         
         this.loadReservations();
     }
-/* 
-    public void setAirport(Airport[] airport) {
-        this.airport = airport;
-    }
-
-    public void setAirlines(Airline[] airline) {
-        this.airlines = airline;
-    }
-*/
     public void setBus(bus[] bus) {
         this.bus = bus;
     }
@@ -55,17 +46,7 @@ public class SystemManager {
     public void setReservations(Reservation[] reservations) {
         this.reservations = reservations;
     }
-    
-    
 
-   /*  public Airport[] getAirport() {
-        return airport;
-    }
-*/
-  /*   public Airline[] getAirlines() {
-        return airlines;
-    }
-*/
     public bus[] getBus() {
         return bus;
     }
@@ -77,107 +58,22 @@ public class SystemManager {
     public String getInputFile() {
         return inputFile;
     }
-    
-     //This Method reads all airportDetails from the relevant inputFile and writes them in an array
- /*    public final void readAirportDetails(){
-        Airport[] airport = new Airport[7];
-        String[] airportDetails = new String[3];
-        String airportID = "";
-        String airportCity = "";
-        String airportCountry = "";
-        int i = 0;
-        
-        try(Scanner read = new Scanner(new FileInputStream(this.inputFile));
-            PrintWriter pw = new PrintWriter(new FileOutputStream("airport.txt"))){
-        
-            boolean end = false;
-            
-            while(read.hasNextLine()&& !end){
-
-                String line = read.nextLine();
-
-                if(line.compareTo("#") == 0){
-                    while(!read.hasNext("#")){                        
-                        airportDetails = read.nextLine().split(",");
-                        airportID = airportDetails[0];
-                        airportCity = airportDetails[1];
-                        airportCountry = airportDetails[2];
-
-                        airport[i] = new Airport(airportID, airportCity, airportCountry);
-                        
-                        pw.println(airport[i]);
-                         i++; 
-                    }
-                    end = true; 
-                    line = "";
-                }
-            }
-        }
-        catch(FileNotFoundException ex){
-            System.out.println("File Not Found");
-        }
-        catch(Exception ex){
-            System.out.println("Exception");
-        }
-        
-        this.setAirport(airport);
-        
-    }
-    
-    //This Method reads all airlineDetails from the relevant inputFile and writes them in an array
-    public final void readAirLineDetails(){
-        
-        Airline[] airline = new Airline[5];
-        String[] airlineDetails = new String[2];
-        String airlineID = "";
-        String airlineName = "";
-        int i=0;
-        
-        try(Scanner read = new Scanner(new FileInputStream(this.inputFile));
-            PrintWriter pw = new PrintWriter(new FileOutputStream("airline.txt"))){
-        
-            boolean end = false;
-            
-            while(read.hasNextLine()&& !end){
-
-                String line = read.nextLine();
-
-                if(line.compareTo("**") == 0){
-                    airlineDetails = read.nextLine().split(",");
-                    airlineID = airlineDetails[0];
-                    airlineName = airlineDetails[1];
-
-                    airline[i] = new Airline(airlineID, airlineName);                    
-                     pw.println(airline[i]);
-                     i++;
-                    
-                }                
-            }
-        }
-        catch(FileNotFoundException ex){
-            System.out.println(ex);
-        }
-        catch(Exception ex){
-            System.out.println(ex);
-        }
-        this.setAirlines(airline);
-    }
-  */  
-        //This Method reads all flightDetails from the relevant inputFile and writes them in an array
+     
+        //This Method reads all fhtDetails from the relevant inputFile and writes them in an array
     public final void readBusDetails(){
         
         bus[] b = new bus[40];
         String[] busDetails = new String[6];
-        //String flightID = "";
+        String busNumber = "";
         String[] travelDate = new String[3];
-        //String departureAirport = "";
+        String location = "";
         //String destinationAirport = "" ;
-        String departureTime = "";
-        String arrivalTime ="";
+        String travelTime = "";
+        
         int i = 0;
         
         try(Scanner read = new Scanner(new FileInputStream(this.inputFile));
-            PrintWriter pw = new PrintWriter(new FileOutputStream("flight.txt"))){
+            PrintWriter pw = new PrintWriter(new FileOutputStream("bus.txt"))){
         
             boolean end = false;
             
@@ -192,18 +88,18 @@ public class SystemManager {
                      int deptDay = Integer.parseInt(travelDate[0]);
                      int deptMonth = Integer.parseInt(travelDate[1]);
                      int deptYear = Integer.parseInt(travelDate[2]);
-                     //departureAirport = fDetails[2];
-                     //destinationAirport = flightDetails[3]; 
-                     departureTime = busDetails[4];
-                     arrivalTime = busDetails[5];
+                     location = busDetails[2];
+                     //destinationAirport = ftDetails[3]; 
+                     travelTime = busDetails[4];
+                     
 
-                     bus[i] = new bus(busNumber, deptDay, deptMonth, deptYear, departureTime, arrivalTime);
+                     bus[i] = new bus(busNumber, deptDay, deptMonth, deptYear, travelTime);
                      
                      
-                     pw.println(flight[i]);
+                     pw.println(bus[i]);
                      i++;
                      
-                    // pw.println(flightID + "\t" + Arrays.toString(departureDate) + "\t" + departureAirport + "\t" + destinationAirport + "\t" + departureTime + "\t" + arrivalTime);
+                    // pw.println(busNumber + "\t" + Arrays.toString(TravelDate) + "\t" + TravelAirport + "\t" + destinationAirport + "\t" + TravelTime + "\t" + arrivalTime);
                     
                 }           
             }
@@ -215,12 +111,12 @@ public class SystemManager {
             System.out.println("Exception");
         }
         
-        this.setFlights(flight);
+        this.setBus(bus);
     }
     
-     //This Method reads all seatDetails of a flight and assign relevant flightClass from the relevant inputFile and writes them in an array
-    public Seat[] readFlightSeatDetails(String flightID){          
-        Seat[] seat = new Seat[448];
+     //This Method reads all seatDetails o and assign relevClass from the relevant inputFile and writes them in an array
+    public Seat[] readBusSeatDetails(String busNumber){          
+        Seat[] seat = new Seat[30];
         String[] ftDetails = new String[6];        
         String ftID = "";
         int numberOfRows = 0;
@@ -228,27 +124,34 @@ public class SystemManager {
         String columnChar = "";
         String rowNumber = "";
         String seatID = "";
-        boolean seatAvailability = false;       //false if available
+        boolean seatAvailability = true;       //true if available
         int seatArrayIndex = -1;
         
         try(Scanner read = new Scanner(new FileInputStream(inputFile));
-            PrintWriter pw = new PrintWriter(new FileOutputStream("seat.txt"),true)){
+            PrintWriter pw = new PrintWriter(new FileOutputStream("seat.txt"),true))
+            {
              
-             while(read.hasNextLine()){     
-                   if(read.nextLine().compareTo("*") == 0){
+             while(read.hasNextLine())
+             {     
+                   if(read.nextLine().compareTo("*") == 0)
+                   {
                        ftDetails = read.nextLine().split(",");
                         ftID = ftDetails[0]; 
 
-                        if(ftID.compareTo(flightID) == 0){ 
-                            for(int className=0; className<3; className++){
-                                switch(className){              //splits classes into rows and store in the array
-                                    case 0:
-                                        numberOfRows = 4;
+                        if(ftID.compareTo(busNumber) == 0)
+                        { 
+                            //for(int className=0; className<3; className++){
+                              //  switch(className){              //splits classes into rows and store in the array
+                                //    case 0:
+                                        numberOfRows = 5;
                                         rowsOfTheClass = read.nextLine().split("@"); 
-                                        for(int i=0; i<rowsOfTheClass.length; i++){                                            
+                                        for(int i=0; i<rowsOfTheClass.length; i++)
+                                        {                                            
                                             rowNumber = Integer.toString(i+1);
-                                            for(int j=0; j<4; j++){
-                                                switch(j){
+                                            for(int j=0; j<4; j++)
+                                            {
+                                                switch(j)
+                                                {
                                                 case 0:
                                                      columnChar = "A";
                                                     break;
@@ -264,10 +167,10 @@ public class SystemManager {
                                                 }                                            
                                                 seatID = columnChar + rowNumber;
                                                 if(rowsOfTheClass[i].charAt(j)== 'f'){
-                                                    seatAvailability = false;
+                                                    seatAvailability = true;
                                                 }
                                                 else{
-                                                    seatAvailability = true;
+                                                    seatAvailability = false;
                                                 }
                                                 seatArrayIndex+=1;
                                                 seat[seatArrayIndex] = new Seat(seatID, seatAvailability);
@@ -278,103 +181,13 @@ public class SystemManager {
                                         }
                                         
                                         break;
-                                    case 1:
-                                        numberOfRows = 6;
-                                        rowsOfTheClass = read.nextLine().split("@"); 
-                                        for(int i=0; i<rowsOfTheClass.length; i++){                                            
-                                            rowNumber = Integer.toString(i+5);                                            
-                                            for(int j=0; j<6; j++){
-                                                switch(j){
-                                                    case 0:
-                                                        columnChar = "A";
-                                                        break;
-                                                    case 1:
-                                                        columnChar = "B";
-                                                        break;
-                                                    case 2:
-                                                        columnChar = "C";
-                                                        break;
-                                                    case 3:
-                                                        columnChar = "F";
-                                                        break;
-                                                    case 4:
-                                                        columnChar = "G";
-                                                        break;
-                                                    case 5:
-                                                        columnChar = "H";
-                                                        break;
-                                                }                                            
-                                                seatID = columnChar + rowNumber;
-                                                if(rowsOfTheClass[i].charAt(j)== 'f'){
-                                                    seatAvailability = false;
-                                                }
-                                                else{
-                                                    seatAvailability = true;
-                                                }
-                                                seatArrayIndex+=1;
-                                                seat[seatArrayIndex] = new Seat(seatID, seatAvailability);
-                                                
-                                                pw.println(seatArrayIndex + "\t" + seatID + "\t" + seatAvailability);
-                                            }
-                                        }
-                                       
-                                        break;
-                                    case 2:
-                                        numberOfRows = 48;
-                                        rowsOfTheClass = read.nextLine().split("@"); 
-                                        for(int i=0; i<rowsOfTheClass.length; i++){                                            
-                                            rowNumber = Integer.toString(i+13);  
-                                            for(int j=0; j<8; j++){
-                                                switch(j){
-                                                    case 0:
-                                                        columnChar = "A";
-                                                        break;
-                                                    case 1:
-                                                        columnChar = "B";
-                                                        break;
-                                                    case 2:
-                                                        columnChar = "C";
-                                                        break;
-                                                    case 3:
-                                                        columnChar = "D";
-                                                        break;
-                                                    case 4:
-                                                        columnChar = "E";
-                                                        break;
-                                                    case 5:
-                                                        columnChar = "F";
-                                                        break;
-                                                    case 6:
-                                                        columnChar = "G";
-                                                        break;
-                                                    case 7:
-                                                        columnChar = "H";
-                                                        break;
-                                                }                                            
-                                                seatID = columnChar + rowNumber;
-                                                if(rowsOfTheClass[i].charAt(j)== 'f'){
-                                                    seatAvailability = false;
-                                                }
-                                                else{
-                                                    seatAvailability = true;
-                                                }
-                                                seatArrayIndex+=1;
-                                                seat[seatArrayIndex] = new Seat(seatID, seatAvailability);
-                                                
-                                                pw.println(seatArrayIndex + "\t" + seatID + "\t" + seatAvailability);
-                                            }
-                                            
-                                        }
-                                        
-                                        break;
-                                }
 
                                                               
                             }
                         }
                    }      
                                   
-            }               
+                        
         }
          catch(FileNotFoundException ex){
              System.out.println("File Not Found");
@@ -385,53 +198,52 @@ public class SystemManager {
         
         return seat;
     }
-    //this takes seat details of all flights into an array
-    public void setFlightSeatDetails(){
-        Seat[][] flightSeats = new Seat[40][448];
-        for(int m=0; m<flights.length; m++){
-            String flightID = this.flights[m].getFlightNumber();
-            flightSeats[m] = this.readFlightSeatDetails(flightID);
+    //this takes seat details of all bus into an array
+    public void setBusSeatDetails(){
+        Seat[][] busSeats = new Seat[40][448];
+        for(int m=0; m<bus.length; m++){
+            String busNumber = this.bus[m].getBusNumber();
+            busSeats[m] = this.readBusSeatDetails(busNumber);
         }
         
-        this.setSeat(flightSeats);
+        this.setSeat(busSeats);
     }
     
-    //this seatches for the flight availability for a particular flight
-    public String searchFlight(int day, int month, int year, String departureAirport, String destinationAirport, String airlineID){
-
+    //this seatches for  availability for a particu
+    public String searchBus(int day, int month, int year)
+    {
 //      boolean end = false;
 //      int i=0;
       String alineID = "";      
-      Flight flight1 = new Flight();
-      flight1.setDepartureDate(day, month, year);
+      bus bus1 = new bus();
+      bus1.setTravelDate(day, month, year);
       int availableSeatCount = 0;
       String str = "";
       
-      for(int i=0; i<flights.length; i++){
-          alineID = flights[i].getFlightNumber().substring(0,2);
+      for(int i=0; i<bus.length; i++){
+          alineID = bus[i].getBusNumber().substring(0,2);
           
-          if(alineID.compareTo(airlineID) == 0){
-              if(flights[i].getDepartureAirport().compareTo(departureAirport) == 0 && flights[i].getDestinationAirport().compareTo(destinationAirport) == 0){
-                  if(flights[i].getDepartureDate().compareTo(flight1.getDepartureDate()) == 0){
+          //if(alineID.compareTo(getBusNumber) == 0){
+            //  if(bus[i].getTravelAirport().compareTo(TravelAirport) == 0 && bus[i].getDestinationAirport().compareTo(destinationAirport) == 0){
+              //    if(bus[i].getTravelDate().compar1.getTravelDate()) == 0){
                      Seat[][] seat = this.getSeat();
                       for(int j=0; j<seat.length; j++){
-                          if(seat[i][j].isStatus()==false){
+                          if(seat[i][j].isStatus()==true)
+                          {
                               availableSeatCount+=1;
                           }
                           
                       }
-                      str = flights[i].getFlightNumber() + "@" + flights[i].getDepartureTime() + "@" + flights[i].getArrivalTime() + "@" + availableSeatCount;
-                     // System.out.println(str);
-//                      end = true;
+                      str = bus[i].getBusNumber() + "@" + bus[i].getTravelTime() +  "@" + availableSeatCount;
+                     
                   }
-              }
-          }
+                  return str;
+                }
+        
       
-      }
-      return str;
-    }
-    //gives the number of seats available to reserve in a particular flight
-    public String searchFlightSeatAvailability(String flightID){
+    
+    //gives the number of seats available to reserve in a particu
+    public String searchBusSeatAvailability(String BusNumber){
         Seat[][] seat = this.getSeat();
         String seatID = "";
         boolean seatAvailability = false;
@@ -440,8 +252,8 @@ public class SystemManager {
         int availableEClass = 0;
         String str = "";
         
-        for(int j=0; j<flights.length; j++){
-            if(flights[j].getFlightNumber().compareTo(flightID) == 0){
+        for(int j=0; j<bus.length; j++){
+            if(bus[j].getBusNumber().compareTo(BusNumber) == 0){
                 for(int i=0; i<448; i++){
                     if(seat[j][i].isStatus()==false){
                         if(i<16){
@@ -461,15 +273,15 @@ public class SystemManager {
        str = availableFClass + "@" + availableBClass + "@" + availableEClass;
        return str; 
     }
-    //gives seat details of a particular flight
-    public Seat[] getSeatDetails(String flightID){
+    //gives seat details of a particu
+    public Seat[] getSeatDetails(String busNumber ){
         Seat[][] seat = this.getSeat();
         Seat[] seatDetails = new Seat[448];
         String seatID = "";
         boolean seatStatus = false;
         
-        for(int j=0; j<flights.length; j++){
-            if(flights[j].getFlightNumber().compareTo(flightID) == 0){
+        for(int j=0; j<bus.length; j++){
+            if(bus[j].getBusNumber().compareTo(busNumber) == 0){
                 for(int i=0; i<448; i++){
                     seatID = seat[j][i].getSeatID();
                     seatStatus = seat[j][i].isStatus();
@@ -481,24 +293,25 @@ public class SystemManager {
         
        return seatDetails;
     }
-     //gets the departure date of a particular flight 
-    public String getDeparturedate(String flightID){
+     //gets the Travel date of a particu 
+    public String getTraveldate(String busNumber){
         String deptDate = ""; 
         
-        for(int j=0; j<flights.length; j++){
-            if(flights[j].getFlightNumber().compareTo(flightID) == 0){
-               deptDate = flights[j].getDepartureDate();
+        for(int j=0; j<bus.length; j++){
+            if(bus[j].getBusNumber().compareTo(busNumber) == 0){
+               deptDate = bus[j].getTravelDate();
             }
         }
         return deptDate;
     }
     
      //returns a reservation type object for a particular reservation
-     public Reservation makeReservation(int number, Passenger[] passengers,String flightID,String deptDate,Seat[] seat)
+     public Reservation makeReservation(int reservationNumber,int number, Student[] student,String busNumber,String deptDate,Seat[] seat)
      {         
          reservationNumber++;
          
-         Reservation reserve = new Reservation(reservationNumber,number, passengers, flightID, deptDate,seat);
+         
+         Reservation reserve = new Reservation(reservationNumber, number, student, busNumber, deptDate,seat);
          
          reservations[reservationNumber]=reserve;
          
@@ -531,14 +344,14 @@ public class SystemManager {
             String[] reserveDetails = new String[6];
             boolean end = false;
             int resNumber;            
-            int numberOfPassengers = 0;
-            Passenger[] passengers = new Passenger[numberOfPassengers];
-            String flightID = "";
-            String departureDate = "";
+            int numberOfStudents = 0;
+            Student[] student = new Student[numberOfStudents];
+            String busNumber = "";
+            String TravelDate = "";
             String[] reservedseatId;
-            String[] passengerDetails = new String[numberOfPassengers];
-            String[] singlePassengerDetails = new String[5];
-            Seat[] reservedSeats = new Seat[numberOfPassengers];
+            String[] StudentDetails = new String[numberOfStudents];
+            String[] singleStudentDetails = new String[5];
+            Seat[] reservedSeats = new Seat[numberOfStudents];
             
             while(read.hasNextLine()&& !end){
 
@@ -549,23 +362,24 @@ public class SystemManager {
                         for(int q=0; q<=reservationNumber; q++){
                             reserveDetails=read.nextLine().split("*");
                             resNumber = Integer.parseInt(reserveDetails[0]);
-                            numberOfPassengers = Integer.parseInt(reserveDetails[1]);
+                            numberOfStudents = Integer.parseInt(reserveDetails[1]);
                             
-                             passengerDetails = reserveDetails[2].substring(1, reserveDetails[2].length()).split(", ");        //check
-                            for(int d=0; d<passengerDetails.length; d++){
-                                singlePassengerDetails = passengerDetails[d].split("@");
-                                Name name = new Name(singlePassengerDetails[0], singlePassengerDetails[1]);
-                                Address address = new Address(singlePassengerDetails[2], singlePassengerDetails[3]);
-                                passengers[d] = new Passenger(name, address, singlePassengerDetails[4]);
+                             StudentDetails = reserveDetails[2].substring(1, reserveDetails[2].length()).split(", ");        //check
+                            for(int d=0; d<StudentDetails.length; d++){
+                                singleStudentDetails = StudentDetails[d].split("@");
+                                Name name = new Name(singleStudentDetails[0], singleStudentDetails[1]);
+                                Address address = new Address(singleStudentDetails[2], singleStudentDetails[3]);
+                                String id = "";
+                                student[d] = new Student(singleStudentDetails[0], singleStudentDetails[1],id,singleStudentDetails[2], singleStudentDetails[3],singleStudentDetails[4]);
                             }
-                            flightID = reserveDetails[3];
-                            departureDate = reserveDetails[4];                            
+                            busNumber = reserveDetails[3];
+                            TravelDate = reserveDetails[4];                            
                              reservedseatId = reserveDetails[5].substring(1, reserveDetails[5].length()).split(", ");      //check
                             for(int x=0; x<reservedseatId.length; x++){
                                 reservedSeats[x] = new Seat(reservedseatId[x],true);  
                             }
                             
-                            Reservation reserve = new Reservation(reservationNumber, numberOfPassengers, passengers, flightID, departureDate,reservedSeats);
+                            Reservation reserve = new Reservation(reservationNumber,numberOfStudents, student, busNumber, TravelDate,reservedSeats);
                         }
                     }
                     end = true; 
@@ -598,116 +412,17 @@ public class SystemManager {
             }
 
         }
-     
-     //save all flight info changes to flightinfo.txt
-     
-         public void saveFlightInfo(){
-         
-            String alineID = "";
-                boolean seatStatus = true;
-                char status = 't' ;
-                char columnchar ;
-                int rowNumber = 0;
-                int seatCount = 0;
-                char[] seatRowOne = new char[16];
-                char[] seatRowTwo = new char[48];
-                char[] seatRowThree = new char[384];
-
-                try(PrintWriter pw = new PrintWriter(new FileOutputStream("finalFlightInfo.txt"))){
-
-                    pw.println("#");
-                                for(int airportNumber=0; airportNumber<airport.length; airportNumber++){
-                                        pw.println(airport[airportNumber].toString());
-                                }
-                                 pw.println("#");
-
-                                for(int airlineNumber=0; airlineNumber<airlines.length; airlineNumber++){
-                                        pw.println("**");
-                                        pw.println(airlines[airlineNumber].toString());
-                                        for(int flightNumber=0; flightNumber<flights.length; flightNumber++){
-                                                alineID = flights[flightNumber].getFlightNumber().split(" ")[0];	
-                                                if(airlines[airlineNumber].getAirlineID().compareTo(alineID)==0){
-                                                        pw.println("*");
-                                                        pw.println(flights[flightNumber].toString());
-
-                                                        for(int seatNumber=0; seatNumber<448; seatNumber++){
-                                                                seatStatus = seats[flightNumber][seatNumber].isStatus();
-                                                                if(seatStatus == false){
-                                                                        status = 'f';
-                                                                }
-                                                                else if(seatStatus == true){
-                                                                        status = 't';
-                                                                }
-
-                                                                columnchar = seats[flightNumber][seatNumber].getSeatID().charAt(0);
-                                                                rowNumber = Integer.parseInt(seats[flightNumber][seatNumber].getSeatID().substring(1));
-
-                                                                if(rowNumber <5){
-                                                                        //seatCount = 16;
-                                                                        seatRowOne[seatNumber] = status;
-                                                                }
-                                                                else if(rowNumber<13){
-                                                                        //seatCount = 48;
-                                                                        seatRowTwo[seatNumber-16] = status;
-                                                                }
-                                                                else{
-                                                                        //seatCount = 384;
-                                                                        seatRowThree[seatNumber-64] = status;
-                                                                }
-                                                        }
-                                                        for(int s=0; s<4; s++){
-                                                                for(int u=0; u<4; u++){
-                                                                        pw.print(seatRowOne[seatCount]);
-                                                                        seatCount+=1;
-                                                                }
-                                                                pw.print("@");
-                                                        }
-                                                        seatCount=0;
-                                                        pw.println();
-                                                        for(int s=0; s<8; s++){
-                                                                for(int u=0; u<6; u++){
-                                                                        pw.print(seatRowTwo[seatCount]);
-                                                                        seatCount+=1;
-                                                                }
-                                                                pw.print("@");
-                                                        }
-                                                        seatCount=0;
-                                                        pw.println();
-                                                        for(int s=0; s<48; s++){
-                                                                for(int u=0; u<8; u++){
-                                                                        pw.print(seatRowThree[seatCount]);
-                                                                        seatCount+=1;
-                                                                }
-                                                                pw.print("@");
-                                                        }
-                                                        pw.println();
-//
-                                                }					
-
-                                        }
-
-                                }
-
-                }
-                catch(FileNotFoundException ex){
-                    System.out.println(ex.getMessage());
-                }
-                catch(Exception ex){
-                    System.out.println(ex.getMessage());
-                }
-	}
-         
-        public Passenger[]  viewPassengerList(String flightID){
+        public Student[] viewStudentList(String busNumber){
             String ftID = "";            
-            Passenger[] passengers = new Passenger[448];
-            int passengerCount = 0;
+            Student[] student = new Student[448];
+            int StudentCount = 0;
             for(int i=0; i<=reservationNumber; i++){
-                ftID = reservations[i].getFlightNumber();
-                if(ftID.compareTo(flightID)==0){
-                    passengers = reservations[i].getPassengersArray();
+                ftID = reservations[i].getBusNumber();
+                if(ftID.compareTo(busNumber)==0){
+                    student = reservations[i].getStudentArray();
                 }
             }
-            return passengers;
+            return student;
         
         }
          

@@ -4,12 +4,11 @@
  * and open the template in the editor.
  */
 package GUI;
-
-import Classes.SystemManager;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.awt.Color;
 import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -19,54 +18,61 @@ import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
+import java.io.*;
+import javax.swing.JOptionPane;
 
+import Classes.*;
 /**
  *
- * @author Madhushi
+ * @author Senarathna
  */
 public class StudentForm extends javax.swing.JFrame {
-
+        
     /**
-     * Creates new form StudentForm
+     * Creates new form StudentNew
      */
+   
+     public static SystemManager manager ;
     
-    public static SystemManager manager ;
-    
-    public StudentForm() {
+   /*   public StudentForm1() {
+         initComponents();
+         
+         construct();
+         
+          manager = new SystemManager("businfo.txt");
+     }
+     
+     public StudentForm1(String file) {
+         initComponents();
+         
+         construct();
+         
+         manager = new SystemManager(file);
+     }*/
+     public StudentForm() {
         initComponents();
         
-        construct();
-        
-         manager = new SystemManager("flightinfo.txt");
+        this.pack();
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
-    
-    public StudentForm(String file) {
-        initComponents();
-        
-        construct();
-        
-        manager = new SystemManager(file);
-    }
-    
-    private void construct()
-    {
-        //DD::: setup the footer notification area with live date and time along with setting the window to maximized state
-        
-        this.setExtendedState( this.getExtendedState()|JFrame.MAXIMIZED_BOTH );
-        
-         //Start Timer
-        final DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        int interval = 1000; // 1000 ms
-
-        new Timer(interval, new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Calendar now = Calendar.getInstance();
-                lblNow.setText(dateFormat.format(now.getTime()));
-            }
-        }).start();
-    }
-
+     private void construct()
+     {
+         //DD::: setup the footer notification area with live date and time along with setting the window to maximized state
+         
+         this.setExtendedState( this.getExtendedState()|JFrame.MAXIMIZED_BOTH );
+         
+          //Start Timer
+         final DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+         int interval = 1000; // 1000 ms
+         new Timer(interval, new ActionListener() {
+             @Override
+             public void actionPerformed(ActionEvent e) {
+                 Calendar now = Calendar.getInstance();
+                 lblNow.setText(dateFormat.format(now.getTime()));
+             }
+         }).start();
+     }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -76,178 +82,78 @@ public class StudentForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
+        lblNow = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        btnBook = new javax.swing.JButton();
+        btnDetails = new javax.swing.JButton();
+        btnAttendance = new javax.swing.JButton();
         dp = new javax.swing.JDesktopPane();
         panelStatus = new javax.swing.JPanel();
-        lblNow = new javax.swing.JLabel();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        menuSave = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        menuClose = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        menuReserveSeat = new javax.swing.JMenuItem();
-        menuCancelReservation = new javax.swing.JMenuItem();
-        //menuFlightPassengerList = new javax.swing.JMenuItem();
-        menuStudentReservations = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        menuCloseAll = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        menuAbout = new javax.swing.JMenuItem();
-
-        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Ride With Us | User Portal");
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowClosing(java.awt.event.WindowEvent evt) {
-                formWindowClosing(evt);
+        setTitle("Student Page | Ride With Us");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMinimumSize(new java.awt.Dimension(707, 569));
+        setResizable(false);
+        getContentPane().setLayout(null);
+
+         jLabel1.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel1.setText("Book Your Seats Here ");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(270, 150, 180, 20);
+        jLabel1.setForeground(Color.white);
+
+        jLabel2.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel2.setText("Check Bus Details Here");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(270, 240, 180, 20);
+        jLabel2.setForeground(Color.white);
+
+        jLabel3.setFont(new java.awt.Font("SansSerif", 0, 14)); // NOI18N
+        jLabel3.setText("Attendance");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(304, 330, 150, 19);
+        jLabel3.setForeground(Color.white);
+
+        btnBook.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnBook.setText("Book Seat");
+        btnBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBook);
+        btnBook.setBounds(290, 170, 90, 32);
+        btnBook.setBackground(new Color(112,148,156));
+        btnBook.setForeground(Color.white);
 
-        dp.setBackground(new java.awt.Color(204, 204, 204));
-
-        javax.swing.GroupLayout dpLayout = new javax.swing.GroupLayout(dp);
-        dp.setLayout(dpLayout);
-        dpLayout.setHorizontalGroup(
-            dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        dpLayout.setVerticalGroup(
-            dpLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 212, Short.MAX_VALUE)
-        );
-
-        lblNow.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        lblNow.setText("Loading..");
-
-        javax.swing.GroupLayout panelStatusLayout = new javax.swing.GroupLayout(panelStatus);
-        panelStatus.setLayout(panelStatusLayout);
-        panelStatusLayout.setHorizontalGroup(
-            panelStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelStatusLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNow)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        panelStatusLayout.setVerticalGroup(
-            panelStatusLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelStatusLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblNow, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jMenuBar1.setMinimumSize(new java.awt.Dimension(66, 50));
-        jMenuBar1.setPreferredSize(new java.awt.Dimension(180, 50));
-
-        jMenu1.setText("File");
-        jMenu1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
-        jMenu1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jMenu1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jMenu1.setPreferredSize(new java.awt.Dimension(30, 25));
-
-        menuSave.setText("Save");
-        menuSave.setPreferredSize(new java.awt.Dimension(49, 30));
-        menuSave.addActionListener(new java.awt.event.ActionListener() {
+        btnDetails.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnDetails.setText("Bus Details");
+        btnDetails.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuSaveActionPerformed(evt);
+                btnDetailsActionPerformed(evt);
             }
         });
-        jMenu1.add(menuSave);
-
-        jMenuItem2.setText("Log Out");
-        jMenuItem2.setPreferredSize(new java.awt.Dimension(65, 30));
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(btnDetails);
+        btnDetails.setBounds(270, 260, 150, 32);
+        btnDetails.setBackground(new Color(112,148,156));
+        btnDetails.setForeground(Color.white);
+        
+        btnAttendance.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnAttendance.setText("Mark Attendance");
+        btnAttendance.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                btnAttendanceActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem2);
-
-        menuClose.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F4, java.awt.event.InputEvent.ALT_MASK));
-        menuClose.setText("Close");
-        menuClose.setPreferredSize(new java.awt.Dimension(97, 30));
-        menuClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCloseActionPerformed(evt);
-            }
-        });
-        jMenu1.add(menuClose);
-
-        jMenuBar1.add(jMenu1);
-
-        jMenu4.setText("Tools");
-        jMenu4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
-
-        menuReserveSeat.setText("Reserve a Seat");
-        menuReserveSeat.setPreferredSize(new java.awt.Dimension(107, 30));
-        menuReserveSeat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuReserveSeatActionPerformed(evt);
-            }
-        });
-        jMenu4.add(menuReserveSeat);
-
-        menuCancelReservation.setText("Cancel Reservation");
-        menuCancelReservation.setPreferredSize(new java.awt.Dimension(131, 30));
-        menuCancelReservation.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCancelReservationActionPerformed(evt);
-            }
-        });
-        jMenu4.add(menuCancelReservation);
-
-       /*  menuFlightPassengerList.setText("Flight Passenger List");
-        menuFlightPassengerList.setPreferredSize(new java.awt.Dimension(139, 30));
-        menuFlightPassengerList.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuFlightPassengerListActionPerformed(evt);
-            }
-        });
-        jMenu4.add(menuFlightPassengerList);
-
-        menuPassengerReservations.setText("Passenger Reservations");
-        menuPassengerReservations.setPreferredSize(new java.awt.Dimension(161, 30));
-        menuPassengerReservations.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuPassengerReservationsActionPerformed(evt);
-            }
-        });*/
-        jMenu4.add(menuStudentReservations);
-
-        jMenuBar1.add(jMenu4);
-
-        jMenu2.setText("Window");
-        jMenu2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
-
-        menuCloseAll.setText("Close All");
-        menuCloseAll.setPreferredSize(new java.awt.Dimension(69, 30));
-        menuCloseAll.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCloseAllActionPerformed(evt);
-            }
-        });
-        jMenu2.add(menuCloseAll);
-
-        jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Help");
-        jMenu3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 15)); // NOI18N
-
-        menuAbout.setText("About");
-        menuAbout.setPreferredSize(new java.awt.Dimension(53, 30));
-        menuAbout.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuAboutActionPerformed(evt);
-            }
-        });
-        jMenu3.add(menuAbout);
-
-        jMenuBar1.add(jMenu3);
-
-        setJMenuBar(jMenuBar1);
-
+        getContentPane().add(btnAttendance);
+        btnAttendance.setBounds(270, 350, 150, 32);
+        getContentPane().setBackground(new Color(23,12,74));
+        btnAttendance.setBackground(new Color(112,148,156));
+        btnAttendance.setForeground(Color.white);
+        
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -262,102 +168,93 @@ public class StudentForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        String ObjButtons[] = {"Yes","No"};
-        int PromptResult = JOptionPane.showOptionDialog(null,"Are you sure you want to Log Out?","Fly With Us",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
-        if(PromptResult==JOptionPane.YES_OPTION)
-        {
-            this.setVisible(false);
-            new FirstPage().setVisible(true);
-        }
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    private void btnBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        SeatSystem ss = new SeatSystem();
+        ss.setVisible(true);
+        ss.pack();
+        this.dispose();
+        
+    }//GEN-LAST:event_btnCancelActionPerformed
+    private void btnDetailsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        checkBusDetails cb = new checkBusDetails();
+        cb.setVisible(true);
+        cb.pack();
+        this.dispose();
 
-    private void menuCloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCloseActionPerformed
-        String ObjButtons[] = {"Yes","No"};
-        int PromptResult = JOptionPane.showOptionDialog(null,"Are you sure you want to exit?","Fly With Us",JOptionPane.DEFAULT_OPTION,JOptionPane.WARNING_MESSAGE,null,ObjButtons,ObjButtons[1]);
-        if(PromptResult==JOptionPane.YES_OPTION)
-        {
-            System.exit(0);
-        }
-    }//GEN-LAST:event_menuCloseActionPerformed
+        
+    }//GEN-LAST:event_btnCancelActionPerformed
+    private void btnAttendanceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        GetStudentList sl = new GetStudentList();
+        sl.setVisible(true);
+        sl.pack();
+        this.dispose();
 
-    private void menuCloseAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCloseAllActionPerformed
-        JInternalFrame[] frames   = dp.getAllFrames();
-        for (int i=0;i<frames.length;i++)
-        {
-            dp.getDesktopManager().closeFrame(frames[i]);
-        }
+        
+    }//GEN-LAST:event_btnCancelActionPerformed
 
-    }//GEN-LAST:event_menuCloseAllActionPerformed
+/* 	try(PrintWriter write = new PrintWriter(new FileOutputStream("newAccount.txt"))){
+	
+		boolean end = false;
+        //Student s = new Student(FirstN,LastN,Id,street,city,PhoneNo);
+        write.println(FirstNameText.getText()+","+LastNameText.getText()+","+IdText.getText()+","+StreetAddressText.getText()+","+CityAddressText.getText()+","+PhoneNoText.getText());
+	}
+	catch(FileNotFoundException ex){
+		 JOptionPane.showMessageDialog(null,"File Not Found");
+	}
+	catch(Exception ex){
+		 JOptionPane.showMessageDialog(null,ex.getMessage());
+	}
+         
+      
+    }*/
 
-    private void menuAboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuAboutActionPerformed
-        About ab = new About();
-        ab.pack();
-        ab.setVisible(true);
-        dp.add(ab);
-    }//GEN-LAST:event_menuAboutActionPerformed
+/*try(Scanner read = new Scanner(new FileInputStream("loginDetails.txt"))){
+	
+    boolean end = false;
+    
+    while(read.hasNextLine()&& !end){
 
-    private void menuReserveSeatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuReserveSeatActionPerformed
-       busSearch interf = new busSearch();
-       interf.pack();
-       interf.setVisible(true);
-       dp.add(interf);
-    }//GEN-LAST:event_menuReserveSeatActionPerformed
-
-    private void menuCancelReservationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCancelReservationActionPerformed
-        Cancellation cancel = new Cancellation();
-        cancel.pack();
-        cancel.setVisible(true);
-        dp.add(cancel);
-    }//GEN-LAST:event_menuCancelReservationActionPerformed
-
-    private void menuFlightPassengerListActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuFlightPassengerListActionPerformed
-        GetStudentList list = new GetStudentList();
-        list.pack();
-        list.setVisible(true);
-        dp.add(list);
-    }//GEN-LAST:event_menuFlightPassengerListActionPerformed
-
-    private void menuPassengerReservationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuPassengerReservationsActionPerformed
-        getBusList list = new getBusList();
-        list.pack();
-        list.setVisible(true);
-        dp.add(list);
-    }//GEN-LAST:event_menuPassengerReservationsActionPerformed
-
-    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
-        manager.saveReservations();;
-        //manager.saveBusInfo();
-    }//GEN-LAST:event_formWindowClosing
-
-    private void menuSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuSaveActionPerformed
-        manager.saveReservations();;
-        //manager.saveFlightInfo();
-    }//GEN-LAST:event_menuSaveActionPerformed
-
+        loginDetails = read.nextLine().split(",");
+        userName = loginDetails[0];
+        password = loginDetails[1];
+                    
+                    if(userName.compareTo(username)==0 && password.compareTo(passWord)==0){
+                        LoadFile1 lf = new LoadFile1();
+                        lf.setVisible(true);
+                        lf.pack();
+                        this.dispose();
+                    }else{
+                        JOptionPane.showMessageDialog(null, "Invalid login credentials. Please try again.");
+                    }
+    }
+}
+catch(FileNotFoundException ex){
+     JOptionPane.showMessageDialog(null,"File Not Found");
+}
+catch(Exception ex){
+     JOptionPane.showMessageDialog(null,ex.getMessage());
+}
+    
+  
+  
+}*/           
+    /**
+     * @param args the command line arguments
+     */
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JDesktopPane dp;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JLabel lblNow;
-    private javax.swing.JMenuItem menuAbout;
-    private javax.swing.JMenuItem menuCancelReservation;
-    private javax.swing.JMenuItem menuClose;
-    private javax.swing.JMenuItem menuCloseAll;
-   // private javax.swing.JMenuItem menuFlightPassengerList;
-    private javax.swing.JMenuItem menuStudentReservations;
-    private javax.swing.JMenuItem menuReserveSeat;
-    private javax.swing.JMenuItem menuSave;
+    private javax.swing.JButton btnBook;
+    private javax.swing.JButton btnDetails;
+    private javax.swing.JButton btnAttendance;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JDesktopPane dp;
     private javax.swing.JPanel panelStatus;
     // End of variables declaration//GEN-END:variables
 }

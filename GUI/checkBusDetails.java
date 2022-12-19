@@ -26,7 +26,7 @@ import Classes.*;
  *
  * @author Senarathna
  */
-public class GetStudentList extends javax.swing.JFrame {
+public class checkBusDetails extends javax.swing.JFrame {
         
     /**
      * Creates new form StudentNew
@@ -50,7 +50,7 @@ public class GetStudentList extends javax.swing.JFrame {
          manager = new SystemManager(file);
      }*/
      JFrame f;
-     public GetStudentList() {
+     public checkBusDetails() {
         initComponents();
         
         this.pack();
@@ -96,38 +96,20 @@ public class GetStudentList extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(null);
 
-        String data[][]={{"First Name","Last Name","ID","City","Street","Phone No"},{"Ria","Sanjay","2021A7PS0025U","Dubai","DSO","12264782"},{"Ilfa","Shaheed","2021A7PS0048U","Dubai","Al Nahda","123467"}};
-        String column[]={"Student First Name","Student Last Name","ID","City","Street","Phone No"};
+        String data[][]={{"Bus 5","24 feb 2021","al nahda","5:20"},{"Bus 6","24 feb 2021","al nahda","5:20",""},
+        {"Bus 2","24 feb 2021","al nahda","5:20"},{"Bus 1","24 feb 2021","al nahda","5:20"}};
+        String column[]={"Bus No","Date","Location","Travel Time"};
         busDetails=new javax.swing.JTable(data,column);
-        busDetails.setBounds(30,40,2000,50);
-        busDetails.setShowGrid(true);
-        //busDetails.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
-/*busDetails.getColumnModel().getColumn(1).setPreferredWidth(400);
-busDetails.getColumnModel().getColumn(2).setPreferredWidth(500);
-busDetails.getColumnModel().getColumn(4).setPreferredWidth(600);
-busDetails.getColumnModel().getColumn(5).setPreferredWidth(300);
-*/
-
+        //busDetails.setBounds(30,40,200,300);
 
        // JScrollPane sp=new JScrollPane(busDetails);
         getContentPane().add(busDetails);
-        busDetails.setBounds(180,180,350,90);
+        busDetails.setBounds(180,180,300,90);
         //getContentPane().setSize(300,400);
         
         setVisible(true);
         
-        btnBack.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
-        btnBack.setText("Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-            
-        });
-        btnBack.setBackground(new Color(112,148,156));
-        btnBack.setForeground(Color.white);
-        getContentPane().add(btnBack);
-        btnBack.setBounds(300, 300, 90, 32);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -142,16 +124,24 @@ busDetails.getColumnModel().getColumn(5).setPreferredWidth(300);
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(panelStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
-        
-       
         pack();
+        btnBack.setFont(new java.awt.Font("SansSerif", 0, 12)); // NOI18N
+        btnBack.setText("Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(450, 100, 90, 32);
+        
     }// </editor-fold>//GEN-END:initComponents
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
-        
         StudentForm lf = new StudentForm();
         lf.setVisible(true);
         lf.pack();
         this.dispose();
+
         
     }
  /*    //GEN-LAST:event_btnCancelActionPerformed
@@ -230,20 +220,20 @@ catch(Exception ex){
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GetStudentList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(checkBusDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GetStudentList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(checkBusDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GetStudentList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(checkBusDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GetStudentList.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(checkBusDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
             
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GetStudentList().setVisible(true);
+                new checkBusDetails().setVisible(true);
             }
         });
         
@@ -257,8 +247,3 @@ catch(Exception ex){
     private javax.swing.JButton btnBack;
     // End of variables declaration//GEN-END:variables
 }
-
-
-
-
-

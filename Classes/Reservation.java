@@ -11,11 +11,12 @@ public class Reservation {
     private String busNumber;
     private String travelDate;
     private Seat[] reservedSeats;
+    private int reservationNumber;
 
     public Reservation(){}
     
-    public Reservation( int numberOfStudents, Student[] student, String busNumber, String travelDate, Seat[] reservedSeats) {
-     //   this.reservationNumber = reservationNumber;
+    public Reservation(int reservationNumber, int numberOfStudents, Student[] student, String busNumber, String travelDate, Seat[] reservedSeats) {
+      this.reservationNumber = reservationNumber;
         this.numberOfStudents = numberOfStudents;
         this.student = student;
         this.busNumber = busNumber;
@@ -23,10 +24,10 @@ public class Reservation {
         this.reservedSeats = reservedSeats;
     }
 
-  /*   public void setReservationNumber(int reservationNumber) {
+     public void setReservationNumber(int reservationNumber) {
         this.reservationNumber = reservationNumber;
     }
-*/
+
     public void setNumberOfStudent(int numberOfStudents) {
         this.numberOfStudents = numberOfStudents;
     }
@@ -35,8 +36,8 @@ public class Reservation {
         this.student = student;
     }
 
-    public void setBusNumber(String flightNumber) {
-        this.busNumber = flightNumber;
+    public void setBusNumber(String busNumber) {
+        this.busNumber = busNumber;
     }
 
     public void setTravelDate(int year, int month, int day) {
@@ -49,10 +50,10 @@ public class Reservation {
         this.reservedSeats = reservedSeats;
     }
 
-  /*   public int getReservationNumber() {
+    public int getReservationNumber() {
         return reservationNumber;
     }
-*/
+
     public int getNumberOfStudents() {
         return numberOfStudents;
     }
@@ -96,3 +97,4 @@ public class Reservation {
     
     
 } 
+
